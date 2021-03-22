@@ -1,2 +1,4 @@
 Os métodos com menos cobertura são os métodos equals() e hashcode().
 Que provavelmente foram autogerados, por isso não é necessário serem testados.
+
+Nem todos os decision branches estão a ser cobertos
