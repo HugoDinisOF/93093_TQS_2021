@@ -38,4 +38,15 @@ public class AddressResolverIT {
         assertThrows(BadArrayIndex.class,() -> resolver.findAddressForLocation(-190,-190));
     }
 
+    @Test
+    public void whenNullURLthrowException() throws IOException, URISyntaxException, ParseException {
+
+        assertThrows(NullPointerException.class, () -> {
+            httpClient.get((null));
+        });
+        assertThrows(IOException.class, () -> {
+            httpClient.get((""));
+        });
+    }
+
 }
