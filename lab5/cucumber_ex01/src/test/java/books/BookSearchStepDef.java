@@ -19,14 +19,14 @@ public class BookSearchStepDef {
     List<Book> result = new ArrayList<>();
 
 
-    @ParameterType("([0-9]{2})-([A-Z a-z])-([0-9]{4})")
+    @ParameterType("([0-9]{2})-([0-9]{2})-([0-9]{4})")
     public LocalDateTime iso8601DateMonthString(String year, String month, String day){
         return LocalDateTime.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day),0, 0);
     }
 
 
-    @ParameterType("([0-9]{4})-([0-9]{2})-([0-9]{2})")
-    public LocalDateTime iso8601Date(String year, String month, String day){
+    @ParameterType("([0-9]{2})-([0-9]{2})-([0-9]{4})")
+    public LocalDateTime iso8601Date(String day, String month, String year){
         return LocalDateTime.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day),0, 0);
     }
 
@@ -37,7 +37,7 @@ public class BookSearchStepDef {
                 .toInstant()));
     }
 
-    @Given("a book with the title {string}, written by {string}, published in {iso8601Date}")
+    @Given("(a/another) book with the title {string}, written by {string}, published in {iso8601Date}")
     public void aBookWithTheTitleOneGoodBookWrittenByAnonymousPublishedInMarch(String title, String author, LocalDateTime published) {
         Book book = new Book(title, author, Date.from(published.toLocalDate().atStartOfDay().atZone(ZoneId.systemDefault())
                 .toInstant()));
